@@ -13,6 +13,7 @@ import { toISigner } from "../signer/KeypairSigner";
 import { ContractExecutionError, ContractErrorCode, mapRpcError, RpcTimeoutError } from "../errors";
 import { RunIdentifier } from "../core/run-identifier";
 import { withRetry } from "../core/retry";
+import { IdempotencyRegistry } from "../core/idempotency";
 
 /** How long (ms) to wait between transaction status polls */
 const POLL_INTERVAL_MS = 2_000;

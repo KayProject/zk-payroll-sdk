@@ -334,6 +334,12 @@ export const DEFAULT_ERROR_MESSAGES: Record<string, string> = {
     "The compliance hold request is invalid. Please review the target, reason code, and required fields.",
   COMPLIANCE_HOLD_RELEASE_UNAUTHORIZED:
     "This hold cannot be released without a valid authorization token identifying who is releasing it.",
+  REVISION_APPROVED_EDIT_BLOCKED:
+    "This revision is already approved and can no longer be edited. Create a new revision to make further changes.",
+  REVISION_ALREADY_APPROVED:
+    "This revision is already approved. Pass { allowReapproval: true } to re-approve it intentionally.",
+  REVISION_VALIDATION_FAILED:
+    "The revision request is invalid. Please review the required identifiers and approver.",
 };
 
 /** Custom message overrides keyed by error code. */
@@ -477,6 +483,9 @@ const CATEGORY_MAP: Record<string, string> = {
   RECONCILIATION_UNEXPECTED_ACTIVITY: "Reconciliation",
   COMPLIANCE_HOLD_VALIDATION_FAILED: "Compliance",
   COMPLIANCE_HOLD_RELEASE_UNAUTHORIZED: "Compliance",
+  REVISION_APPROVED_EDIT_BLOCKED: "Revision",
+  REVISION_ALREADY_APPROVED: "Revision",
+  REVISION_VALIDATION_FAILED: "Revision",
 };
 
 const RETRYABLE_CODES = new Set<string>(

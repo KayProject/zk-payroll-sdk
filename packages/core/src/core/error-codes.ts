@@ -17,6 +17,7 @@ export const ErrorCategory = {
   SIMULATION: "simulation",
   IDEMPOTENCY: "idempotency",
   COMPLIANCE: "compliance",
+  REVISION: "revision",
 } as const;
 
 export type ErrorCategoryType =
@@ -354,6 +355,30 @@ export const ERROR_CODE_REGISTRY: Record<string, ErrorCodeEntry> = {
     retryable: false,
     suggestedMessage:
       "This hold cannot be released without a valid authorization token identifying who is releasing it.",
+  },
+
+  // ── Payroll Revision Protection ─────────────────────────────────────────
+  REVISION_APPROVED_EDIT_BLOCKED: {
+    category: ErrorCategory.REVISION,
+    meaning: "An edit was attempted against a payroll revision that has already been approved.",
+    retryable: false,
+    suggestedMessage:
+      "This revision is already approved and can no longer be edited. Create a new revision to make further changes.",
+  },
+  REVISION_ALREADY_APPROVED: {
+    category: ErrorCategory.REVISION,
+    meaning:
+      "Approval was requested for a revision that is already approved, without explicitly allowing re-approval.",
+    retryable: false,
+    suggestedMessage:
+      "This revision is already approved. Pass { allowReapproval: true } to re-approve it intentionally.",
+  },
+  REVISION_VALIDATION_FAILED: {
+    category: ErrorCategory.REVISION,
+    meaning: "Required revision input (identifiers or approver) failed validation.",
+    retryable: false,
+    suggestedMessage:
+      "The revision request is invalid. Please review the required identifiers and approver.",
   },
 };
 

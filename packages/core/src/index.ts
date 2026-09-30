@@ -214,3 +214,6 @@ export * from "./approval";
 
 // Request cancellation support
 export * from "./cancellation";
+
+// Approved payroll revision protection
+export * from "./revision";
